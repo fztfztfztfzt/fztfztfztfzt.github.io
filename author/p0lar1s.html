@@ -6,11 +6,11 @@
 
     <title>P0lar1s blog - P0lar1s</title>
 
-    <link rel="stylesheet" href="../theme/css/normalize.css" />
-    <link rel="stylesheet" href="../theme/css/foundation.min.css" />
-    <link rel="stylesheet" href="../theme/css/style.css" />
-    <link rel="stylesheet" href="../theme/css/pygments.css" />	
-    <script src="../theme/js/modernizr.js"></script>
+    <link rel="stylesheet" href="https://fztfztfztfzt.github.io/theme/css/normalize.css" />
+    <link rel="stylesheet" href="https://fztfztfztfzt.github.io/theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="https://fztfztfztfzt.github.io/theme/css/style.css" />
+    <link rel="stylesheet" href="https://fztfztfztfzt.github.io/theme/css/pygments.css" />	
+    <script src="https://fztfztfztfzt.github.io/theme/js/modernizr.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,8 @@
 <div class="top-bar">
 <div class="row">
     <div class="large-9 large-centered columns">
-	    <h1><a href="..">P0lar1s blog</a></h1>
+	    <h1><a href="https://fztfztfztfzt.github.io">P0lar1s blog</a></h1>
+        <h3><a href="https://fztfztfztfzt.github.io">EL PSY CONGROO</a></h3>
     </div>
 </div>
 </div>
@@ -45,20 +46,224 @@
         
         
 
-            <article>
-                <a href="../first-blog.html"><h3 class="article-title">First Blog</h3></a>
-<h6 class="subheader" title="2017-09-18T00:00:00+08:00">周一 18 九月 2017
+            <!-- <article>
+                <a href="https://fztfztfztfzt.github.io/2017-09-21.html"><h3 class="article-title">使用Pelican搭建静态博客</h3></a>
+<h6 class="subheader" title="2017-09-21T00:00:00+08:00">周四 21 九月 2017
 </h6>
 
 
-<p>It works.</p><p class="subheader">Category: <a href="../category/blog.html">Blog</a>
+<h2 id="_1">前言</h2>
+<p>之前用Hexo搭建静态博客，但安装完<code>nodejs</code>后<code>cmder</code>在启动时会调用<code>node.exe</code>导致启动缓慢，又因为我比较偏爱<code>Python</code>，所以我采用了使用<code>Python</code>编写的<code>Pelican</code>静态博客生成系统。</p>
+<h2 id="_2">介绍</h2>
+<p><code>Pelican</code>是个开源的的<code>Python</code>编写的静态网页生成器，支持<code>MarkDown</code>和<code>reStructuredText</code>，采用<code>Jinja2</code>模板引擎，可以很方便的修改模板。</p>
+<h2 id="_3">安装</h2>
+<div class="highlight"><pre><span></span>pip install pelican
+pip install markdown
+</pre></div>
 
+
+<p>这样就完成了<code>Pelican</code>的安装</p>
+<h2 id="_4">搭建一个博客</h2>
+<div class="highlight"><pre><span></span>mkdir /path/to/your/blog
+<span class="nb">cd</span> /path/to/your/blog
+pelican-quickstart
+</pre></div>
+
+
+<p>运行<code>pelican-quickstart</code>后主要会生成以下文件</p>
+<div class="highlight"><pre><span></span>.
+<span class="p">|</span>-- content                <span class="c1"># 所有文章放于此目录</span>
+<span class="p">|</span>-- develop_server.sh      <span class="c1"># 用于开启测试服务器</span>
+<span class="p">|</span>-- Makefile               <span class="c1"># 方便管理博客的Makefile</span>
+<span class="p">|</span>-- output                 <span class="c1"># 静态生成文件</span>
+<span class="p">|</span>-- pelicanconf.py         <span class="c1"># 配置文件</span>
+<span class="p">|</span>-- publishconf.py         <span class="c1"># 配置文件</span>
+</pre></div>
+
+
+<h3 id="aliase">配置aliase</h3>
+<p>因为在<code>windows</code>下无法使用<code>make</code>，所以我在<code>cmder</code>的配置文件中添加了<code>aliase</code>来方便博客的搭建<br>
+修改<code>cmder</code>安装目录下<code>config</code>文件夹下的<code>aliase</code>文件，添加以下内容</p>
+<div class="highlight"><pre><span></span>blog_make=pelican /path/to/your/blog/content/ -o /path/to/your/blog/content/output/ -s /path/to/your/blog/content/pelicanconf.py
+blog_update=cd /path/to/your/blog/content/output &amp;&amp; git add . &amp;&amp; git commit -m &#39;update&#39; &amp;&amp; git push origin master
+blog_web=cd /path/to/your/blog/content/output &amp;&amp; python -m SimpleHTTPServer
+</pre></div>
+
+
+<p>重启cmder后就可以使用<code>blog_make</code>构建博客，使用<code>blog_web</code>预览博客，使用<code>blog_update</code>上传到Github。</p>
+<h3 id="_5">开始写文章</h3>
+<p>在<code>content</code>目录下新建一个<code>HelloWorld.md</code>文件，写入以下内容</p>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">First</span> <span class="n">Blog</span>
+<span class="n">Date</span><span class="o">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">18</span>
+<span class="n">Modified</span><span class="o">:</span> <span class="mi">2017</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">18</span>
+<span class="n">Category</span><span class="o">:</span> <span class="n">Blog</span>
+<span class="n">Tags</span><span class="o">:</span> <span class="n">Python</span>
+
+<span class="n">It</span> <span class="n">works</span><span class="o">.</span>
+</pre></div>
+
+
+<p>然后执行</p>
+<div class="highlight"><pre><span></span>blog_make
+</pre></div>
+
+
+<p>生成<code>html</code><br>
+再执行</p>
+<div class="highlight"><pre><span></span>blog_web
+</pre></div>
+
+
+<p>现在可以访问<code>http://localhost:8000</code>来预览生成的网页。</p>
+<h3 id="_6">创建一个页面</h3>
+<p>文章都是与时间绑定的，而有些不含时间信息的网页，例如<code>About</code>或者<code>contact</code>页面，就称为页面。
+在<code>contect</code>目录下创建<code>pages</code>目录,然后在该目录下创建一些文件，再执行<code>blog_make</code>生成<code>html</code>，再访问<code>http://localhost:8000</code>来预览生成的网页。<br>
+PS:有的主题可能默认不显示<code>pages</code></p>
+<h3 id="_7">更换主题</h3>
+<p><code>Pelican</code>有很多主题可供选择</p>
+<div class="highlight"><pre><span></span>git clone git://github.com/getpelican/pelican-themes.git 
+</pre></div>
+
+
+<p>以<code>zurb-F5-basic</code>主题为例，在<code>pelicanconf.py</code>配置文件中修改<code>THEME</code></p>
+<div class="highlight"><pre><span></span>THEME = &#39;pelican-themes/zurb-F5-basic&#39;
+</pre></div>
+
+
+<p>重新执行</p>
+<div class="highlight"><pre><span></span>blog_make
+</pre></div>
+
+
+<p>再执行</p>
+<div class="highlight"><pre><span></span>blog_web
+</pre></div>
+
+
+<p>现在可以访问<code>http://localhost:8000</code>来预览生成的网页。</p>
+<h3 id="_8">使用插件</h3>
+<p>首先从<code>Github</code>上下载插件</p>
+<div class="highlight"><pre><span></span>git clone git://github.com/getpelican/pelican-plugins.git
+</pre></div>
+
+
+<p>以<code>sitemap</code>插件为例，在<code>pelicanconf.py</code>中添加</p>
+<div class="highlight"><pre><span></span><span class="n">PLUGIN_PATH</span> <span class="o">=</span> <span class="s2">u&quot;pelican-plugins&quot;</span>
+
+<span class="n">PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;sitemap&quot;</span><span class="p">]</span>
+
+<span class="n">SITEMAP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;priorities&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;articles&quot;</span><span class="p">:</span> <span class="mf">0.7</span><span class="p">,</span>
+        <span class="s2">&quot;indexes&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+        <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;changefreqs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;articles&quot;</span><span class="p">:</span> <span class="s2">&quot;monthly&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;indexes&quot;</span><span class="p">:</span> <span class="s2">&quot;daily&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pages&quot;</span><span class="p">:</span> <span class="s2">&quot;monthly&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>重新执行</p>
+<div class="highlight"><pre><span></span>blog_make
+</pre></div>
+
+
+<p>再执行</p>
+<div class="highlight"><pre><span></span>blog_web
+</pre></div>
+
+
+<p>现在可以访问<code>http://localhost:8000</code>来预览生成的网页。</p>
+<h3 id="_9">添加静态目录</h3>
+<p>有时候md文件会引用一些静态的图片，这时可以配置静态目录，在<code>pelicanconf.py</code>中修改</p>
+<div class="highlight"><pre><span></span>STATIC_PATHS = [u&quot;img&quot;]
+</pre></div>
+
+
+<p>重新执行</p>
+<div class="highlight"><pre><span></span>blog_make
+</pre></div>
+
+
+<p>原来在<code>content</code>目录下的<code>img</code>文件就复制到了<code>output</code>目录下。</p>
+<h3 id="github">上传到Github</h3>
+<p>首先在<code>output</code>目录执行</p>
+<div class="highlight"><pre><span></span>git init
+git add .
+git commit -m &quot;update&quot;
+git remote add origin git@github.com:YourGitHubName/YourGitHubName.github.io.git
+git push -u origin master
+</pre></div>
+
+
+<p>之后也可以通过<code>blog_update</code>来上传到<code>Github</code></p>
+<h2 id="todo">TODO</h2>
+<ol>
+<li>添加评论</li>
+<li>Google Analytics</li>
+</ol><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/python.html">Python</a>
+
+    Tagged: 
+    <a href="https://fztfztfztfzt.github.io/tag/python.html">Python </a>
+    <a href="https://fztfztfztfzt.github.io/tag/pelican.html">Pelican </a>
+    <a href="https://fztfztfztfzt.github.io/tag/blog.html">Blog </a>
 </p>
 
 
 
+            </article> --> 
+            <article>
+                <a href="https://fztfztfztfzt.github.io/2017-09-21.html"><h3 class="article-title">使用Pelican搭建静态博客</h3></a>
+<h6 class="subheader" title="2017-09-21T00:00:00+08:00">周四 21 九月 2017
+</h6>
+
+
+<h2 id="_1">前言</h2>
+<p>之前用Hexo搭建静态博客，但安装完<code>nodejs</code>后<code>cmder</code>在启动时会调用<code>node.exe</code>导致启动缓慢 …</p><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/python.html">Python</a>
+
+    Tagged: 
+    <a href="https://fztfztfztfzt.github.io/tag/python.html">Python </a>
+    <a href="https://fztfztfztfzt.github.io/tag/pelican.html">Pelican </a>
+    <a href="https://fztfztfztfzt.github.io/tag/blog.html">Blog </a>
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://fztfztfztfzt.github.io/2017-09-21.html">Read More</a>
             </article>
 
+                <hr  class="gradient"/>
+
+
+        
+
+
+            <article>
+                <a href="https://fztfztfztfzt.github.io/2017-09-18.html"><h3 class="article-title">First Blog</h3></a>
+<h6 class="subheader" title="2017-09-18T00:00:00+08:00">周一 18 九月 2017
+</h6>
+
+
+<p>It works.</p><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/blog.html">Blog</a>
+
+    Tagged: 
+    <a href="https://fztfztfztfzt.github.io/tag/python.html">Python </a>
+    <a href="https://fztfztfztfzt.github.io/tag/pelican.html">Pelican </a>
+    <a href="https://fztfztfztfzt.github.io/tag/blog.html">Blog </a>
+</p>
+
+
+
+                <a class="button radius secondary small right" href="https://fztfztfztfzt.github.io/2017-09-18.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+            <!-- /#posts-list -->
 <div class="pagination-centered">
 <h6 class="subheader">Page 1 of 1</h6>
 
@@ -67,10 +272,6 @@
 </p>
 </div>
 
-
-
-            <!-- /#posts-list -->
-
     </div>
     <!-- End Main Content -->
 
@@ -78,27 +279,28 @@
     <aside class="large-3 columns">
         <h5 class="sidebar-title">Site</h5>
         <ul class="side-nav">
-            <li><a href="../archives.html">Archives</a>
-            <li><a href="../tags.html">Tags</a>
+            <li><a href="https://fztfztfztfzt.github.io/archives.html">Archives</a>
+            <li><a href="https://fztfztfztfzt.github.io/tags.html">Tags</a>
         </ul>
 
 		
         <h5 class="sidebar-title">Categories</h5>
         <ul class="side-nav">
-            <li><a href="../category/blog.html">Blog</a></li>
+            <li><a href="https://fztfztfztfzt.github.io/category/blog.html">Blog</a></li>
+            <li><a href="https://fztfztfztfzt.github.io/category/python.html">Python</a></li>
    
         </ul>
 
         <h5 class="sidebar-title">Links</h5>
         <ul class="side-nav">
-            <li><a href="http://getpelican.com/">Pelican</a></li>
-            <li><a href="http://python.org/">Python.org</a></li>
-            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+            <li><a href="http://jeff-leaf.site/">Jeff</a></li>
+            <li><a href="https://blog.getpelican.com/">Pelican</a></li>
         </ul>
 		
         <h5 class="sidebar-title">Social</h5>
         <ul class="side-nav">
             <li><a href="https://github.com/fztfztfztfzt">GitHub</a></li>
+            <li><a href="https://www.zhihu.com/people/polaris-feng/activities">Zhihu</a></li>
         </ul>
 
     </aside> <!-- End Sidebar -->
@@ -119,3 +321,7 @@
 </footer>
 </body>
 </html>
+
+<a href="https://github.com/fztfztfztfzt">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="//s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+</a>

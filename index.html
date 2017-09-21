@@ -227,36 +227,7 @@ git push origin master
 <h2 id="_1">前言</h2>
 <p>之前用Hexo搭建静态博客，但安装完<code>nodejs</code>后<code>cmder</code>在启动时会调用<code>node.exe</code>导致启动缓慢，又因为我比较偏爱<code>Python</code>，所以我采用了使用<code>Python</code>编写的<code>Pelican</code>静态博客生成系统。</p>
 <h2 id="_2">介绍</h2>
-<p><code>Pelican</code>是个开源的的<code>Python</code>编写的静态网页生成器，支持<code>MarkDown</code>和<code>reStructuredText</code>，采用<code>Jinja2</code>模板引擎，可以很方便的修改模板。</p>
-<h2 id="_3">安装</h2>
-<div class="highlight"><pre><span></span>pip install pelican
-pip install markdown
-</pre></div>
-
-
-<p>这样就完成了<code>Pelican</code>的安装</p>
-<h2 id="_4">搭建一个博客</h2>
-<div class="highlight"><pre><span></span>mkdir /path/to/your/blog
-<span class="nb">cd</span> /path/to/your/blog
-pelican-quickstart
-</pre></div>
-
-
-<p>运行<code>pelican-quickstart</code>后主要会生成以下文件</p>
-<div class="highlight"><pre><span></span>.
-<span class="p">|</span>-- content                <span class="c1"># 所有文章放于此目录</span>
-<span class="p">|</span>-- develop_server.sh      <span class="c1"># 用于开启测试服务器</span>
-<span class="p">|</span>-- Makefile               <span class="c1"># 方便管理博客的Makefile</span>
-<span class="p">|</span>-- output                 <span class="c1"># 静态生成文件</span>
-<span class="p">|</span>-- pelicanconf.py         <span class="c1"># 配置文件</span>
-<span class="p">|</span>-- publishconf.py         <span class="c1"># 配置文件</span>
-</pre></div>
-
-
-<h3 id="aliase">配置aliase</h3>
-<p>因为在<code>windows</code>下无法使用<code>make</code>，所以我在<code>cmder</code>的配置文件中添加了<code>aliase</code>来方便博客的搭建<br>
-修改<code>cmder</code>安装目录下<code>config</code>文件夹下的<code>aliase</code>文件，添加以下内容</p>
-<div class="highlight"><pre><span></span>blog_make=pelican /path/to/your/blog/content/ -o /path/to/your/blog …</pre></div><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/python.html">Python</a>
+<p><code>Pelican</code>是个开源的的<code>Python</code>编写的静态网页生成器，支持<code>MarkDown</code>和<code>reStructuredText</code>，采用<code>Jinja2</code>模板引擎，可以很方便的修改模板 …</p><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/python.html">Python</a>
 
     Tagged: 
     <a href="https://fztfztfztfzt.github.io/tag/python.html">Python </a>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ubuntu常用配置</title>
+
+    <link rel="stylesheet" href="./theme/css/normalize.css" />
+    <link rel="stylesheet" href="./theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="./theme/css/style.css" />
+    <link rel="stylesheet" href="./theme/css/pygments.css" />	
+    <script src="./theme/js/modernizr.js"></script>
+</head>
+
+<body>
+
+<!-- Nav Bar -->
+<nav>
+<div class="top-bar">
+<div class="row">
+    <div class="large-9 large-centered columns">
+	    <h1><a href=".">P0lar1s blog</a></h1>
+        <h3><a href=".">EL PSY CONGROO</a></h3>
+    </div>
+</div>
+</div>
+
+<!-- Show menu items and pages -->
+<div class="row">
+<div class="large-9 columns">
+    <ul class="button-group navigation">
+
+    </ul>
+</div>
+</div>
+</nav>
+<!-- End Nav -->
+
+
+<!-- Main Page Content and Sidebar -->
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-9 columns">
+<article>
+    <header>
+        <h3 class="article-title"><a href="./2017-09-23.html" rel="bookmark"
+        title="Permalink to Ubuntu常用配置">Ubuntu常用配置</a></h3>
+    </header>
+
+<h6 class="subheader" title="2017-09-23T00:00:00+08:00">周六 23 九月 2017
+</h6>
+
+
+    <h2 id="_1">设置代理</h2>
+<p>修改<code>/etc/profile</code></p>
+<div class="highlight"><pre><span></span>sudo vim /etc/profile
+</pre></div>
+
+
+<p>添加</p>
+<div class="highlight"><pre><span></span>export http_proxy=http://ip:port
+export https_proxy=http://ip:port
+</pre></div>
+
+
+<p>重启或者<code>source /etc/profile</code>即可生效<br>
+需要注意的是：使用<code>sudo</code>时会使用<code>root</code>用户的环境变量，此时代理就失效了。可以使用<code>sudo</code>的<code>-E</code>参数，使得<code>root</code>用户也可以使用普通用户下的环境变量。例如：</p>
+<div class="highlight"><pre><span></span>sudo -E apt-get update
+</pre></div>
+
+
+<h2 id="_2">更换主题</h2>
+<p><code>Unity Tweak Tool</code>可以方便得调整<code>Unity</code>桌面环境，所以首先安装<code>Unity Tweak Tool</code></p>
+<div class="highlight"><pre><span></span>sudo apt-get install unity-tweak-tool
+</pre></div>
+
+
+<p>接着安装主题，我比较喜欢Flatabulous，就以安装Flatabulous为例</p>
+<div class="highlight"><pre><span></span>sudo add-apt-repository ppa:noobslab/themes
+sudo add-apt-repository ppa:noobslab/icons
+sudo apt-get update
+sudo apt-get install flatabulous-theme
+sudo apt-get install ultra-flat-icons
+</pre></div>
+
+
+<p>安装完成后打开<code>Unity Tweak Tool</code>，在Theme栏中，修改为Flatabulous，在Icons栏中，修改为Ultra-flat</p>
+<h2 id="_3">优化终端</h2>
+<h3 id="oh-my-zsh">安装oh-my-zsh</h3>
+<ul>
+<li>首先安装<code>zsh</code></li>
+</ul>
+<div class="highlight"><pre><span></span>    sudo apt-get install zsh
+</pre></div>
+
+
+<ul>
+<li>安装<code>oh-my-zsh</code></li>
+</ul>
+<div class="highlight"><pre><span></span>wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+</pre></div>
+
+
+<ul>
+<li>将<code>zsh</code>设为默认shell</li>
+</ul>
+<div class="highlight"><pre><span></span>chsh -s $(which zsh)
+</pre></div>
+
+
+<h3 id="tmux">安装tmux</h3>
+<div class="highlight"><pre><span></span>sudo apt-get install tmux
+</pre></div>
+
+
+<h2 id="fcitx">fcitx框架下安装谷歌拼音输入法</h2>
+<div class="highlight"><pre><span></span>sudo apt-get install fcitx fcitx-googlepinyin im-config
+</pre></div>
+
+
+<p>接着输入命令</p>
+<div class="highlight"><pre><span></span>im-config
+</pre></div>
+
+
+<p>将<code>fcitx</code>设为默认的输入法框架<br>
+重启即可看到<code>fcitx</code>的键盘图标<br>
+接着在<code>setting</code>中进入<code>text entry</code>，点击加号将google pinyin添加到输入法列表中<br>
+接着就能使用谷歌拼音输入法了</p>
+<h2 id="atom">安装atom</h2>
+<div class="highlight"><pre><span></span>sudo add-apt-repository ppa:webupd8team/atom
+sudo apt update
+sudo apt install atom
+</pre></div>
+<p class="subheader">Category: <a href="./category/linux.html">Linux</a>
+
+    Tagged: 
+    <a href="./tag/linux.html">Linux </a>
+    <a href="./tag/ubuntu.html">Ubuntu </a>
+</p>
+
+
+
+
+</article>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Sidebar -->
+    <aside class="large-3 columns">
+        <h5 class="sidebar-title">Site</h5>
+        <ul class="side-nav">
+            <li><a href="./archives.html">Archives</a>
+            <li><a href="./tags.html">Tags</a>
+        </ul>
+
+		
+        <h5 class="sidebar-title">Categories</h5>
+        <ul class="side-nav">
+            <li><a href="./category/blog.html">Blog</a></li>
+            <li><a href="./category/hadoop.html">Hadoop</a></li>
+            <li><a href="./category/linux.html">Linux</a></li>
+            <li><a href="./category/python.html">Python</a></li>
+   
+        </ul>
+
+        <h5 class="sidebar-title">Links</h5>
+        <ul class="side-nav">
+            <li><a href="http://jeff-leaf.site/">Jeff</a></li>
+            <li><a href="https://blog.getpelican.com/">Pelican</a></li>
+        </ul>
+		
+        <h5 class="sidebar-title">Social</h5>
+        <ul class="side-nav">
+            <li><a href="https://github.com/fztfztfztfzt">GitHub</a></li>
+            <li><a href="https://www.zhihu.com/people/polaris-feng/activities">Zhihu</a></li>
+        </ul>
+
+    </aside> <!-- End Sidebar -->
+
+</div> <!-- End Main Content and Sidebar -->
+
+
+<!-- Footer -->
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-6 columns">
+              <!--                  <p>P0lar1s blog by P0lar1s</p> -->
+            </div>
+            </div>
+    </div>
+</footer>
+</body>
+</html>
+
+<a href="https://github.com/fztfztfztfzt">
+<img style="position: absolute; top: 0; right: 0; border: 0;" src="//s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub">
+</a>

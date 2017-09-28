@@ -95,30 +95,46 @@ xxx.xxx.xxx.xxx slave3
 修改<code>/etc/hostname</code>为master、slave0等，可以方便得区分各个节点，重启</p>
 <h2 id="hadoop">添加hadoop用户</h2>
 <hr>
-<p><code>sudo useradd -m hadoop -s /bin/bash</code><br>
-添加hadoop用户，并使用 /bin/bash 作为 shell。<br>
-<code>sudo passwd hadoop</code><br>
-为hadoop设置密码<br>
-<code>sudo adduser hadoop sudo</code><br>
-为hadoop用户增加管理员权限，方便部署  </p>
+<div class="highlight"><pre><span></span>sudo useradd -m hadoop -s /bin/bash
+</pre></div>
+
+
+<p>添加hadoop用户，并使用 /bin/bash 作为 shell。  </p>
+<div class="highlight"><pre><span></span>sudo passwd hadoop
+</pre></div>
+
+
+<p>为hadoop设置密码  </p>
+<div class="highlight"><pre><span></span>sudo adduser hadoop sudo
+</pre></div>
+
+
+<p>为hadoop用户增加管理员权限，方便部署  </p>
 <h2 id="ssh">集群SSH免密码登录</h2>
 <hr>
 <h3 id="master">master节点</h3>
 <ol>
-<li>在master节点中使用<br>
-<code>ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa</code><br>
-生成公钥</li>
-<li>
-<p><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code>使得<code>ssh localhost</code>免密码</p>
-</li>
-<li>
-<p>将生成的公钥上传到所有slave节点中<br>
-<code>scp ~/.ssh/id_rsa.pub hadoop@slave0:/tmp/master_key</code></p>
-</li>
+<li>在master节点中使用  </li>
 </ol>
+<div class="highlight"><pre><span></span>ssh-keygen -t rsa -P <span class="s1">&#39;&#39;</span> -f ~/.ssh/id_rsa
+</pre></div>
+
+
+<p>生成公钥
+2. <code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code>使得<code>ssh localhost</code>免密码</p>
+<ol>
+<li>将生成的公钥上传到所有slave节点中  </li>
+</ol>
+<div class="highlight"><pre><span></span>scp ~/.ssh/id_rsa.pub hadoop@slave0:/tmp/master_key
+</pre></div>
+
+
 <h3 id="slave">slave节点</h3>
-<p>在所有slave节点中执行<br>
-<code>cat /tmp/master_key &gt;&gt; ~/.ssh/authorized_keys</code></p>
+<p>在所有slave节点中执行  </p>
+<div class="highlight"><pre><span></span>cat /tmp/master_key &gt;&gt; ~/.ssh/authorized_keys
+</pre></div>
+
+
 <h3 id="ssh_1">测试SSH免密码</h3>
 <p>1.在master节点中运行<code>ssh localhost</code>，能直接登录<br>
 2.在master节点中运行<code>ssh slave0</code>，对于所有slave节点都能直接登录</p>
@@ -132,13 +148,17 @@ xxx.xxx.xxx.xxx slave3
 <ol>
 <li>用<code>scp</code>将压缩包上传到服务器</li>
 <li>解压jdk<br>
-<code>tar zxvf jdk-8u144-linux-x64.tar.gz</code></li>
+<code>bash
+    tar zxvf jdk-8u144-linux-x64.tar.gz</code></li>
 <li>复制到<code>/usr/java</code><br>
-<code>mv jdk-8u144-linux-x64 /usr/java</code></li>
+<code>bash
+    mv jdk-8u144-linux-x64 /usr/java</code></li>
 <li>设置环境变量<br>
-<code>vim /etc/profile</code>
+<code>bash
+    vim /etc/profile</code>
     在最后加上
-    <code>export JAVA_HOME=/usr/java/jdk1.8.0_144
+    <code>bash
+    export JAVA_HOME=/usr/java/jdk1.8.0_144
     export JRE_HOME=$JAVA_HOME/jre
     export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
     export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</code>

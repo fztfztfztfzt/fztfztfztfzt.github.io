@@ -4,7 +4,7 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width" />
 
-    <title>P0lar1s blog - Hadoop</title>
+    <title>Hadoop安装准备</title>
     <script src="https://s19.cnzz.com/z_stat.php?id=1264506055&web_id=1264506055" language="JavaScript"></script>
     
     <!-- Global Site Tag (gtag.js) - Google Analytics -->
@@ -57,16 +57,17 @@
 
     <!-- Main Blog Content -->
     <div class="large-9 columns">
-        
-        
+<article>
+    <header>
+        <h3 class="article-title"><a href="https://fztfztfztfzt.github.io/2017-09-26.html" rel="bookmark"
+        title="Permalink to Hadoop安装准备">Hadoop安装准备</a></h3>
+    </header>
 
-            <!-- <article>
-                <a href="https://fztfztfztfzt.github.io/2017-09-26.html"><h3 class="article-title">Hadoop安装准备</h3></a>
 <h6 class="subheader" title="2017-09-26T00:00:00+08:00">周二 26 九月 2017
 </h6>
 
 
-<h2 id="_1">流程</h2>
+    <h2 id="_1">流程</h2>
 <hr>
 <ul>
 <li>修改hosts</li>
@@ -148,7 +149,8 @@ xxx.xxx.xxx.xxx slave3
 </ol>
 <h2 id="_3">总结</h2>
 <hr>
-<p>至此，前期准备已经完成，主要的目的是配置网络环境和软件运行环境。</p><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/hadoop.html">Hadoop</a>
+<p>至此，前期准备已经完成，主要的目的是配置网络环境和软件运行环境。</p>
+<p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/hadoop.html">Hadoop</a>
 
     Tagged: 
     <a href="https://fztfztfztfzt.github.io/tag/hadoop.html">Hadoop </a>
@@ -158,89 +160,22 @@ xxx.xxx.xxx.xxx slave3
 
 
 
-<p><a href="https://fztfztfztfzt.github.io/2017-09-26.html#disqus_thread">comments</a></p>            </article> --> 
-            <article>
-                <a href="https://fztfztfztfzt.github.io/2017-09-26.html"><h3 class="article-title">Hadoop安装准备</h3></a>
-<h6 class="subheader" title="2017-09-26T00:00:00+08:00">周二 26 九月 2017
-</h6>
 
+	<h4>Comments</h4>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'P0lar1s'
+        var disqus_identifier = "2017-09-26.html";
+        var disqus_url = "https://fztfztfztfzt.github.io/2017-09-26.html";
 
-<h2 id="_1">流程</h2>
-<hr>
-<ul>
-<li>修改hosts</li>
-<li>添加hadoop用户</li>
-<li>集群SSH免密码登录</li>
-<li>jdk安装</li>
-</ul>
-<h2 id="hosts">修改hosts</h2>
-<hr>
-<p>修改每个节点的<code>/etc/hosts</code></p>
-<div class="highlight"><pre><span></span>vim /etc/hosts
-</pre></div>
-
-
-<p>向其中添加如下的信息</p>
-<div class="highlight"><pre><span></span>127.0.0.1   localhost
-xxx.xxx.xxx.xxx master
-xxx.xxx.xxx.xxx slave0
-xxx.xxx …</pre></div><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/hadoop.html">Hadoop</a>
-
-    Tagged: 
-    <a href="https://fztfztfztfzt.github.io/tag/hadoop.html">Hadoop </a>
-    <a href="https://fztfztfztfzt.github.io/tag/spark.html">Spark </a>
-    <a href="https://fztfztfztfzt.github.io/tag/docker.html">Docker </a>
-</p>
-
-
-
-<p><a href="https://fztfztfztfzt.github.io/2017-09-26.html#disqus_thread">comments</a></p>                <a class="button radius secondary small right" href="https://fztfztfztfzt.github.io/2017-09-26.html">Read More</a>
-            </article>
-
-                <hr  class="gradient"/>
-
-
-        
-
-
-            <article>
-                <a href="https://fztfztfztfzt.github.io/2017-09-22.html"><h3 class="article-title">Spark on Docker on YARN(LCE enabled)</h3></a>
-<h6 class="subheader" title="2017-09-22T00:00:00+08:00">周五 22 九月 2017
-</h6>
-
-
-<p>这些文档是我在配置Spark on Docker on YARN(LCE enabled)记录下的一些笔记</p>
-<p>主要分为一下几个部分</p>
-<ul>
-<li><a href="">Hadoop安装准备</a></li>
-<li><a href="">Hadoop单机配置</a></li>
-<li><a href="">Hadoop集群配置</a></li>
-<li><a href="">Spark on YARN配置</a></li>
-<li><a href="">Spark on YARN(LCE enabled)配置</a></li>
-<li><a href="">Spark on Docker on YARN(LCE enabled)配置</a> </li>
-<li><a href="">自动化配置 …</a></li></ul><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/hadoop.html">Hadoop</a>
-
-    Tagged: 
-    <a href="https://fztfztfztfzt.github.io/tag/hadoop.html">Hadoop </a>
-    <a href="https://fztfztfztfzt.github.io/tag/spark.html">Spark </a>
-    <a href="https://fztfztfztfzt.github.io/tag/docker.html">Docker </a>
-</p>
-
-
-
-<p><a href="https://fztfztfztfzt.github.io/2017-09-22.html#disqus_thread">comments</a></p>                <a class="button radius secondary small right" href="https://fztfztfztfzt.github.io/2017-09-22.html">Read More</a>
-                <hr  class="gradient"/>
-            </article>
-
-            <!-- /#posts-list -->
-<div class="pagination-centered">
-<h6 class="subheader">Page 1 of 1</h6>
-
-<p>
-
-</p>
-</div>
-
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
     </div>
     <!-- End Main Content -->
 

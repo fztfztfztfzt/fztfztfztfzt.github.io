@@ -61,96 +61,148 @@
         
 
             <!-- <article>
-                <a href="https://fztfztfztfzt.github.io/2017-09-24.html"><h3 class="article-title">Linux常用命令</h3></a>
-<h6 class="subheader" title="2017-09-24T00:00:00+08:00">周日 24 九月 2017
+                <a href="https://fztfztfztfzt.github.io/2017-09-26.html"><h3 class="article-title">Hadoop安装准备</h3></a>
+<h6 class="subheader" title="2017-09-26T00:00:00+08:00">周二 26 九月 2017
 </h6>
 
 
-<p><a href="http://www.runoob.com/linux/linux-command-manual.html">Linux命令大全</a></p>
-<h2 id="scp">scp</h2>
-<div class="highlight"><pre><span></span>scp <span class="o">[</span>-1246BCpqrv<span class="o">]</span> <span class="o">[</span>-c cipher<span class="o">]</span> <span class="o">[</span>-F ssh_config<span class="o">]</span> <span class="o">[</span>-i identity_file<span class="o">]</span>
-<span class="o">[</span>-l limit<span class="o">]</span> <span class="o">[</span>-o ssh_option<span class="o">]</span> <span class="o">[</span>-P port<span class="o">]</span> <span class="o">[</span>-S program<span class="o">]</span>
-<span class="o">[[</span>user@<span class="o">]</span>host1:<span class="o">]</span>file1 <span class="o">[</span>...<span class="o">]</span> <span class="o">[[</span>user@<span class="o">]</span>host2:<span class="o">]</span>file2
-<span class="c1">#-1： 强制scp命令使用协议ssh1</span>
-<span class="c1">#-2： 强制scp命令使用协议ssh2</span>
-<span class="c1">#-4： 强制scp命令只使用IPv4寻址</span>
-<span class="c1">#-6： 强制scp命令只使用IPv6寻址</span>
-<span class="c1">#-B： 使用批处理模式（传输过程中不询问传输口令或短语）</span>
-<span class="c1">#-C： 允许压缩。（将-C标志传递给ssh，从而打开压缩功能）</span>
-<span class="c1">#-p：保留原文件的修改时间，访问时间和访问权限。</span>
-<span class="c1">#-q： 不显示传输进度条。</span>
-<span class="c1">#-r： 递归复制整个目录。</span>
-<span class="c1">#-v：详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题</span>
-<span class="c1">#-c cipher： 以cipher将数据传输进行加密，这个选项将直接传递给ssh。</span>
-<span class="c1">#-F ssh_config： 指定一个替代的ssh配置文件，此参数直接传递给ssh。</span>
-<span class="c1">#-i identity_file： 从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。</span>
-<span class="c1">#-l limit： 限定用户所能使用的带宽，以Kbit/s为单位。</span>
-<span class="c1">#-o ssh_option： 如果习惯于使用ssh_config(5)中的参数传递方式，</span>
-<span class="c1">#-P port：注意是大写的P, port是指定数据传输用到的端口号</span>
-<span class="c1">#-S program： 指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</span>
+<h2 id="_1">流程</h2>
+<hr>
+<ul>
+<li>修改hosts</li>
+<li>添加hadoop用户</li>
+<li>集群SSH免密码登录</li>
+<li>jdk安装</li>
+</ul>
+<h2 id="hosts">修改hosts</h2>
+<hr>
+<p>修改每个节点的<code>/etc/hosts</code></p>
+<div class="highlight"><pre><span></span>vim /etc/hosts
 </pre></div>
 
 
-<p>可以简写为</p>
-<div class="highlight"><pre><span></span>scp <span class="o">[</span>可选参数<span class="o">]</span> sourcefile targetfile 
+<p>向其中添加如下的信息</p>
+<div class="highlight"><pre><span></span>127.0.0.1   localhost
+xxx.xxx.xxx.xxx master
+xxx.xxx.xxx.xxx slave0
+xxx.xxx.xxx.xxx slave1
+xxx.xxx.xxx.xxx slave2
+xxx.xxx.xxx.xxx slave3
 </pre></div>
 
 
-<h2 id="mv">mv</h2>
-<h2 id="expect">expect</h2>
-<p>expect是一个用来处理交互的命令。借助expect，我们可以将交互过程写在一个脚本上，使之自动化完成。</p>
-<h2 id="date">date</h2>
-<div class="highlight"><pre><span></span>date +%s  
-<span class="c1">#将当前时间以时间戳表示</span>
-date -d <span class="s1">&#39;2017-9-22 09:55&#39;</span> +%s
-<span class="c1">#将指定的时间转换为时间戳</span>
-date -d @1506045439
-<span class="c1">#不指定时间日期格式，将时间戳转化为日期</span>
-date -d @1506045439 +<span class="s2">&quot;%Y-%m-%d %H:%M:%S&quot;</span>
-<span class="c1">#指定时间日期格式，将时间戳转化为日期</span>
-</pre></div>
-
-
-<h2 id="scrot">Scrot</h2>
-<p>Scrot(SCR eensh OT)是使用imlib2库获取和保存图像的截图捕获实用程序。
-使用以下命令安装<code>Scrot</code></p>
-<div class="highlight"><pre><span></span>sudo apt-get install scrot
-</pre></div>
-
-
-<p>安装完后可以使用以下的命令启动<code>Scrot</code></p>
-<div class="highlight"><pre><span></span>scrot [options] [filename]
-</pre></div>
-
-
-<p>一些常用的参数</p>
-<div class="highlight"><pre><span></span>scrot -v
-<span class="c1">#查看版本</span>
-scrot <span class="o">[</span>image-name<span class="o">]</span>.png
-<span class="c1">#指定文件名</span>
-scrot -u
-<span class="c1">#截取当前的窗口</span>
-scrot -ub
-<span class="c1">#截取时包含边框</span>
-scrot -s
-<span class="c1">#截取鼠标点击的窗口</span>
-scrot --delay <span class="o">[</span>NUM<span class="o">]</span>
-<span class="c1">#延迟NUM秒截图</span>
-scrot abc.png -e ‘gthumb abc.png’
-<span class="c1">#截屏后打开图形编辑器</span>
-scrot -e ‘gthumb <span class="nv">$n</span>’
-<span class="c1">#$f – 提供对截图路径（包括文件名）的访问。</span>
-<span class="c1">#$n – 提供快照名称</span>
-<span class="c1">#$s – 可以访问截图的大小 </span>
-</pre></div><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/linux.html">Linux</a>
+<p>修改后在每个节点<code>ping</code>其他节点应该都能<code>ping</code>通<br>
+修改<code>/etc/hostname</code>为master、slave0等，可以方便得区分各个节点，重启</p>
+<h2 id="hadoop">添加hadoop用户</h2>
+<hr>
+<p><code>sudo useradd -m hadoop -s /bin/bash</code><br>
+添加hadoop用户，并使用 /bin/bash 作为 shell。<br>
+<code>sudo passwd hadoop</code><br>
+为hadoop设置密码<br>
+<code>sudo adduser hadoop sudo</code><br>
+为hadoop用户增加管理员权限，方便部署  </p>
+<h2 id="ssh">集群SSH免密码登录</h2>
+<hr>
+<h3 id="master">master节点</h3>
+<ol>
+<li>在master节点中使用<br>
+<code>ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa</code><br>
+生成公钥</li>
+<li>
+<p><code>cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code>使得<code>ssh localhost</code>免密码</p>
+</li>
+<li>
+<p>将生成的公钥上传到所有slave节点中<br>
+<code>scp ~/.ssh/id_rsa.pub hadoop@slave0:/tmp/master_key</code></p>
+</li>
+</ol>
+<h3 id="slave">slave节点</h3>
+<p>在所有slave节点中执行<br>
+<code>cat /tmp/master_key &gt;&gt; ~/.ssh/authorized_keys</code></p>
+<h3 id="ssh_1">测试SSH免密码</h3>
+<p>1.在master节点中运行<code>ssh localhost</code>，能直接登录<br>
+2.在master节点中运行<code>ssh slave0</code>，对于所有slave节点都能直接登录</p>
+<h3 id="_2">注意</h3>
+<ol>
+<li>若上传了公钥仍然需要密码，则可能是<code>.ssh</code>文件夹和<code>authorized_keys</code>文件的权限没有设置好，可以将<code>authorized_keys</code>的权限设置为600或者644、将<code>.ssh</code>文件夹的权限设置为700  </li>
+<li>在使用<code>ssh slave0</code>等没有指明用户的命令时，则默认登录到同名用户中</li>
+</ol>
+<h2 id="jdk">jdk安装</h2>
+<hr>
+<ol>
+<li>用<code>scp</code>将压缩包上传到服务器</li>
+<li>解压jdk<br>
+<code>tar zxvf jdk-8u144-linux-x64.tar.gz</code></li>
+<li>复制到<code>/usr/java</code><br>
+<code>mv jdk-8u144-linux-x64 /usr/java</code></li>
+<li>设置环境变量<br>
+<code>vim /etc/profile</code>
+    在最后加上
+    <code>export JAVA_HOME=/usr/java/jdk1.8.0_144
+    export JRE_HOME=$JAVA_HOME/jre
+    export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+    export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</code>
+    在终端中输入<code>source /etc/profile</code>更新配置</li>
+<li>测试是否安装成功<br>
+    在终端中输入<code>java -version</code>查看版本信息是否正常</li>
+</ol>
+<h2 id="_3">总结</h2>
+<hr>
+<p>至此，前期准备已经完成，主要的目的是配置网络环境和软件运行环境。</p><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/hadoop.html">Hadoop</a>
 
     Tagged: 
-    <a href="https://fztfztfztfzt.github.io/tag/linux.html">Linux </a>
+    <a href="https://fztfztfztfzt.github.io/tag/hadoop.html">Hadoop </a>
+    <a href="https://fztfztfztfzt.github.io/tag/spark.html">Spark </a>
+    <a href="https://fztfztfztfzt.github.io/tag/docker.html">Docker </a>
 </p>
 
 
 
-<p><a href="https://fztfztfztfzt.github.io/2017-09-24.html#disqus_thread">comments</a></p>            </article> --> 
+<p><a href="https://fztfztfztfzt.github.io/2017-09-26.html#disqus_thread">comments</a></p>            </article> --> 
+            <article>
+                <a href="https://fztfztfztfzt.github.io/2017-09-26.html"><h3 class="article-title">Hadoop安装准备</h3></a>
+<h6 class="subheader" title="2017-09-26T00:00:00+08:00">周二 26 九月 2017
+</h6>
+
+
+<h2 id="_1">流程</h2>
+<hr>
+<ul>
+<li>修改hosts</li>
+<li>添加hadoop用户</li>
+<li>集群SSH免密码登录</li>
+<li>jdk安装</li>
+</ul>
+<h2 id="hosts">修改hosts</h2>
+<hr>
+<p>修改每个节点的<code>/etc/hosts</code></p>
+<div class="highlight"><pre><span></span>vim /etc/hosts
+</pre></div>
+
+
+<p>向其中添加如下的信息</p>
+<div class="highlight"><pre><span></span>127.0.0.1   localhost
+xxx.xxx.xxx.xxx master
+xxx.xxx.xxx.xxx slave0
+xxx.xxx …</pre></div><p class="subheader">Category: <a href="https://fztfztfztfzt.github.io/category/hadoop.html">Hadoop</a>
+
+    Tagged: 
+    <a href="https://fztfztfztfzt.github.io/tag/hadoop.html">Hadoop </a>
+    <a href="https://fztfztfztfzt.github.io/tag/spark.html">Spark </a>
+    <a href="https://fztfztfztfzt.github.io/tag/docker.html">Docker </a>
+</p>
+
+
+
+<p><a href="https://fztfztfztfzt.github.io/2017-09-26.html#disqus_thread">comments</a></p>                <a class="button radius secondary small right" href="https://fztfztfztfzt.github.io/2017-09-26.html">Read More</a>
+            </article>
+
+                <hr  class="gradient"/>
+
+
+        
+
+
             <article>
                 <a href="https://fztfztfztfzt.github.io/2017-09-24.html"><h3 class="article-title">Linux常用命令</h3></a>
 <h6 class="subheader" title="2017-09-24T00:00:00+08:00">周日 24 九月 2017
@@ -173,10 +225,8 @@ scrot -e ‘gthumb <span class="nv">$n</span>’
 
 
 <p><a href="https://fztfztfztfzt.github.io/2017-09-24.html#disqus_thread">comments</a></p>                <a class="button radius secondary small right" href="https://fztfztfztfzt.github.io/2017-09-24.html">Read More</a>
-            </article>
-
                 <hr  class="gradient"/>
-
+            </article>
 
         
 

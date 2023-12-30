@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 未来道具研究所</title>
+    <link>https://fztfztfztfzt.github.io/posts/</link>
+    <description>Recent content in Posts on 未来道具研究所</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Dec 2023 11:49:02 +0800</lastBuildDate>
+    <atom:link href="https://fztfztfztfzt.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>https://fztfztfztfzt.github.io/posts/my-first-post2/</link>
+      <pubDate>Thu, 28 Dec 2023 11:49:02 +0800</pubDate>
+      <guid>https://fztfztfztfzt.github.io/posts/my-first-post2/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

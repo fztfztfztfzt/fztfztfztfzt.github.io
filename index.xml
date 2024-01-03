@@ -23,6 +23,13 @@
       <description></description>
     </item>
     <item>
+      <title>参会列表</title>
+      <link>https://fztfztfztfzt.github.io/conferences/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://fztfztfztfzt.github.io/conferences/</guid>
+      <description> Conference Title Date Zer0Con 2023 Find and exploit race condition bugs in modern JS engines 2023-04-13 京麒网络安全大会 JIT bugs in instruction selection 2022-12-29 ISC 2022 JS 漏洞的挖掘与利用 2022-07-30 Zer0Con 2022 New guided Javascript Fuzzing 2022-04-21 </description>
+    </item>
+    <item>
       <title>文章分类与统计</title>
       <link>https://fztfztfztfzt.github.io/post-categories/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
